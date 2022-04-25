@@ -22,3 +22,10 @@ __filename =  file name
 require = function to use modules (CommonJs)
 module = info about current module(file)
 process = info about env where the program is being executed
+
+Modules 
+- all your code will be run in one file but it will be divided into modules
+- encapsulated code 
+- every file in node is a module
+- what ever we export in the exports object we
+    can access all over the project
