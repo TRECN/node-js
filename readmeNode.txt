@@ -12,4 +12,7 @@ REPL:
 
 Start :
 
-create a folder and create a javascript file to run the javascrpt file we need to  
+create a folder and create a 
+javascript file to run the javascrpt 
+file we need to write node <name>.js 
+
