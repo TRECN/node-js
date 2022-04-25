@@ -16,3 +16,9 @@ create a folder and create a
 javascript file to run the javascrpt 
 file we need to write node <name>.js 
 
+GLOBALS - No Window!! 
+__dirname = path to current directory 
+__filename =  file name 
+require = function to use modules (CommonJs)
+module = info about current module(file)
+process = infor about env where the program is being executed
