@@ -36,3 +36,5 @@ Built-in Modules
 - FS 
 - HTTP 
 
+OS Modules 
+- const os=require('os) to initialize os module to a variable called os
