@@ -3,8 +3,8 @@
 // Modules -  Encapsulated Code (only share minimum),only shareing what we want
 const name=require('./names');
 const sayHi=require('./utils')
-
-
+const data = require('./alternative')
+console.log(data);
 
  sayHi(`susan`)
  sayHi(name.john)
