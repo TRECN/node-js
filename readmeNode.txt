@@ -38,3 +38,6 @@ Built-in Modules
 
 OS Modules 
 - const os=require('os) to initialize os module to a variable called os
+
+path Module 
+- const path =  require('path') to initialize path module to a variable called path
