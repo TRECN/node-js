@@ -4,8 +4,8 @@
 const name=require('./names');
 const sayHi=require('./utils')
 const data = require('./alternative')
-console.log(data);
+require('./mindgrenage')
 
- sayHi(`susan`)
- sayHi(name.john)
- sayHi(name.peter)
+//  sayHi(`susan`)
+//  sayHi(name.john)
+//  sayHi(name.peter)
