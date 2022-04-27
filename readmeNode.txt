@@ -41,3 +41,6 @@ OS Modules
 
 path Module 
 - const path =  require('path') to initialize path module to a variable called path
+
+FS Module 
+- const {readFileSync} = require('fs') to destructure the module FS
