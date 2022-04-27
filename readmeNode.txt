@@ -44,3 +44,5 @@ path Module
 
 FS Module 
 - const {readFileSync} = require('fs') to destructure the module FS
+- readFileSync() is used to read the content of the file 
+- writeFileSync() is used to write contents in a file or create a file
