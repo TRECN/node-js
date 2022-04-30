@@ -61,3 +61,13 @@ HTTP Module
 - To set up a server we use createServer() function in http module 
 - req is request res is response (these both are objects)
 - to setup port we use server.listen() function
+
+NPM:
+npm- global command, comes with node 
+npm --version
+
+local dependency - use it only in this particular project 
+npm i <packageName>
+
+global dependency - use it in any project 
+npm install -g <packageName>
