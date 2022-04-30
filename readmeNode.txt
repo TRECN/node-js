@@ -49,3 +49,8 @@ Sync methods
 - writeFileSync() is used to write contents in a file or create a file
 Async methods 
 - const {readFile,writeFile} = require('fs')
+- readFile() is used to read the content of the file 
+- writeFile() is used to write contents in a file or create a file
+- we can use multiple callbacks 
+- here on task doesnot prevents other task from happening 
+- here node carry on with the next user without worrying  about the previous user
