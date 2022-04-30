@@ -59,5 +59,5 @@ HTTP Module
 - const http  = require('http') to initiallize http module to http variable
 - it is a module to setup a server 
 - To set up a server we use createServer() function in http module 
-- req is request res is response 
+- req is request res is response (these both are objects)
 - to setup port we use server.listen() function
