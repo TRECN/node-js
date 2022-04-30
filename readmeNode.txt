@@ -54,3 +54,10 @@ Async methods
 - we can use multiple callbacks 
 - here on task doesnot prevents other task from happening 
 - here node carry on with the next user without worrying  about the previous user
+
+HTTP Module 
+- const http  = require('http') to initiallize http module to http variable
+- it is a module to setup a server 
+- To set up a server we use createServer() function in http module 
+- req is request res is response 
+- to setup port we use server.listen() function
