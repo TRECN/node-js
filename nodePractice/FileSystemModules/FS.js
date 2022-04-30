@@ -4,7 +4,7 @@ console.log('start')
 const first = readFileSync('./content/first.txt','utf8')
 const second = readFileSync('./content/second.txt','utf8')
 
-console.log(first,second)
+//console.log(first,second)
 
 //writeFileSync takes two parameters 1: path, 2: content to write
 writeFileSync(
