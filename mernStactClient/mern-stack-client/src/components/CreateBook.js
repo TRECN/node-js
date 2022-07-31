@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class CreateBook extends Component {
 
@@ -12,7 +13,8 @@ export default class CreateBook extends Component {
             description:'',
             published_date:'',
             publisher:''
-        };
+    }};
+
 
         onChange =e=>{
             this.state({[e.target.name]:e.target.value})
@@ -21,7 +23,7 @@ export default class CreateBook extends Component {
         onSubmit=e=>{
             e.preventDefault();
 
-            const date={
+            const data={
                 title: this.state.title,
                 isbn: this.state.isbn,
                 author: this.state.author,
@@ -42,17 +44,29 @@ export default class CreateBook extends Component {
                         published_date:'',
                         publisher:''
                     })
+                    this.props.history.push('/')
+                })
+                .catch(er=>{
+                    console.log('error in create book');
                 })
 
         }
 
 
-    }
-
-
   render() {
     return (
-      <div>CreateBook</div>
+      <div className="CreateBook">
+          <div className="container">
+              <div className="row">
+                  <div className="col-md-8 m-auto">
+                      <br />
+                      <Link to='/' className='btn btn-outline-warning float-left'>
+                        Show book list
+                      </Link>
+                  </div>
+              </div>
+          </div>
+      </div>
     )
   }
 }
