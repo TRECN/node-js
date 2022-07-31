@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useParams } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
 
-class ShowBookDetails extends Component {
+class showBookDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class ShowBookDetails extends Component {
   }
 
   componentDidMount() {
-    // console.log("Print id: " + this.props.match.params.id);
+    console.log("Print id: " + this.props.match.params.id);
     axios
       .get('http://localhost:8082/api/books/'+this.props.match.params.id)
       .then(res => {
@@ -132,4 +132,4 @@ class ShowBookDetails extends Component {
   }
 }
 
-export default ShowBookDetails;
+export default showBookDetails;
