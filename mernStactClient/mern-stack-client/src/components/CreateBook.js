@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react'
 
 export default class CreateBook extends Component {
@@ -25,10 +26,27 @@ export default class CreateBook extends Component {
                 isbn: this.state.isbn,
                 author: this.state.author,
                 description: this.state.description,
-                published_date
+                published_date:this.state.published_date,
+                publisher:this.state.publisher
 
             }
+
+            axios
+                .post('http://localhost:8082/api/books',data)
+                .then(res=>{
+                    this.state({
+                        title: '',
+                        isbn:'',
+                        author:'',
+                        description:'',
+                        published_date:'',
+                        publisher:''
+                    })
+                })
+
         }
+
+
     }
 
 
