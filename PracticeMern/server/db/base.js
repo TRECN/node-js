@@ -7,7 +7,7 @@ const client = new MongoClient(Db,{
 
 var _db;
 
-module.export={
+module.exports={
     connectToServer:(callback)=>{
         client.connect((er,db)=>{
             if(db){
@@ -19,5 +19,5 @@ module.export={
     },
     getDb:()=>{
         return _db;
-    },
+    }
 }
