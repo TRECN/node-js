@@ -7,16 +7,7 @@ const dbo=require('../db/base');
 
 const ObjectId = require('mongodb').ObjectId;
 
-recordRoutes.route('/record').get((req,res)=>{
-    let db_connect = dbo.getDb('employees');
-    db_connect
-        .collection('records')
-        .find({})
-        .toArray((er,result)=>{
-            if(er)throw er;
-            res.json(result);
-        });
-});
+
 
 recordRoutes.route('/record/:id').get((req,res)=>{
     let db_connect=dbo.getDb();
