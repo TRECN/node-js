@@ -18,7 +18,7 @@ const Record =(props)=>{
 }
 
 export default function RecordList() {
-  const [records,setRecord]=useState([]);
+  const [record,setRecord]=useState([]);
 
   useEffect(()=>{
     async function getRecords(){
@@ -36,7 +36,16 @@ export default function RecordList() {
     getRecords();
 
     return;
-  },[records.length]);
+  },[record.length]);
+
+
+  const deleteRecord=async(id)=>{
+    await fetch(`http://localhost:5000/${id}`,{
+      method:'DELETE'
+    });
+    const newRecords=records.filter((el)=>el._id!==id);
+    setRecord(newRecords)
+  }
 
   const recordList=()=>{
     return records.map((record)=>{
