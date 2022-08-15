@@ -1,21 +1,24 @@
 import React, { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const Record =(props)=>{
+const Record =(props)=>(
   <tr>
     <td>{props.record.name}</td>
-    <td>{props.record.Position}</td>
+    <td>{props.record.position}</td>
     <td>{props.record.level}</td>
     <td>
-      <Link className='btn btn-link' to={`/edit/${props.record._id}`}/>
-      <button className="btn btn-link" onClick={()=>{
+      <Link className='btn btn-link' 
+      to={`/edit/${props.record._id}`}>EDIT</Link>|
+      <button className="btn btn-link" 
+      onClick={()=>{
         props.deleteRecord(props.record._id)
-      }}>
+      }}
+      >
         Delete
       </button>
     </td>
   </tr>
-}
+);
 
 export default function RecordList() {
   const [records,setRecord]=useState([]);
@@ -32,6 +35,7 @@ export default function RecordList() {
 
       const records =await response.json();
       setRecord(records);
+      console.log(records)
     }
     getRecords();
 
@@ -73,7 +77,7 @@ export default function RecordList() {
           </tr>
         </thead>
         <tbody>
-          {recordList}
+          {recordList()}
         </tbody>
       </table>
     </div>
