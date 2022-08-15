@@ -10,13 +10,13 @@ export default function Create() {
   });
   const navigate = useNavigate();
 
-  const updateForm=(value)=>{
+  updateForm=(value)=>{
     return setForm((prev)=>{
       return{...prev,...value};
     });
   }
 
-  const onSubmit =async(e)=>{
+  onSubmit =async(e)=>{
     e.preventDefault();
 
     const newPerson={...form};
@@ -42,7 +42,17 @@ export default function Create() {
 
   return (
     <div>
-      
+      <h3>Create an New Record</h3>
+      <form onSubmit={onSubmit()}>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input type="text"
+          className='form-control'
+          id='name'
+          value={form.name}
+          onChange={(e)=>updateForm({position:e.target.value})} />
+        </div>
+      </form>
     </div>
   )
 }
