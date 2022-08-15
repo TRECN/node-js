@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Record =(props)=>{
@@ -18,6 +18,37 @@ const Record =(props)=>{
 }
 
 export default function RecordList() {
+  const [records,setRecord]=useState([]);
+
+  useEffect(()=>{
+    async function getRecords(){
+      const response= await fetch(`http://localhost:5000/record/`);
+
+      if(!response.ok){
+        const mes=`An err has occurred:${response.statusText}`;
+        window.alert(mes);
+        return;
+      }
+
+      const records =await response.json();
+      setRecord(records);
+    }
+    getRecords();
+
+    return;
+  },[records.length]);
+
+  const recordList=()=>{
+    return records.map((record)=>{
+      return(
+        <Record
+          record={record}
+          deleteRecord={()=>del}
+        />
+      )
+    })
+  }
+
   return (
     <div></div>
   )
