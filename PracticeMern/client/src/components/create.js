@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css'
 
 export default function Create() {
 
@@ -10,13 +11,13 @@ export default function Create() {
   });
   const navigate = useNavigate();
 
-  updateForm=(value)=>{
+  const updateForm=(value)=>{
     return setForm((prev)=>{
       return{...prev,...value};
     });
   }
 
-  onSubmit =async(e)=>{
+  const onSubmit =async(e)=>{
     e.preventDefault();
 
     const newPerson={...form};
@@ -46,11 +47,32 @@ export default function Create() {
       <form onSubmit={onSubmit()}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text"
+          <input 
+          type="text"
           className='form-control'
           id='name'
           value={form.name}
+          onChange={(e)=>updateForm({name:e.target.value})} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="position">Position</label>
+          <input 
+          type="text"
+          className='form-control'
+          id='position'
+          value={form.position}
           onChange={(e)=>updateForm({position:e.target.value})} />
+        </div>
+        <div className="form-group">
+          <div className="form-check form-check-inline">
+            <input type="radio" 
+              className='form-check-input'
+              name='positionIntern'
+              value='Intern'
+              checked={form.level==="Intern"}
+              onChange={(e)=>updateForm({level:e.target.value})}
+            />
+          </div>
         </div>
       </form>
     </div>
