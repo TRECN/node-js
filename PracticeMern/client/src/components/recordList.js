@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const Record =(props)=>{
@@ -18,7 +18,7 @@ const Record =(props)=>{
 }
 
 export default function RecordList() {
-  const [record,setRecord]=useState([]);
+  const [records,setRecord]=useState([]);
 
   useEffect(()=>{
     async function getRecords(){
@@ -36,7 +36,7 @@ export default function RecordList() {
     getRecords();
 
     return;
-  },[record.length]);
+  },[records.length]);
 
 
   const deleteRecord=async(id)=>{
@@ -52,13 +52,30 @@ export default function RecordList() {
       return(
         <Record
           record={record}
-          deleteRecord={()=>del}
+          deleteRecord={()=>deleteRecord(record._id)}
+          key={record._id}
+
         />
-      )
-    })
+      );
+    });
   }
 
   return (
-    <div></div>
+    <div>
+      <h3>Record List</h3>
+      <table className="table table-striped" style={{marginTop:20}}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {recordList()}
+        </tbody>
+      </table>
+    </div>
   )
 }
