@@ -10,10 +10,16 @@ export default function create() {
   });
   const navigate = useNavigate();
 
-  updateForm=(value)=>{
+  const updateForm=(value)=>{
     return setForm((prev)=>{
       return{...prev,...value};
     });
+  }
+
+  const onSubmit =async(e)=>{
+    e.preventDefault();
+
+    
   }
 
   return (
