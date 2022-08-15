@@ -73,7 +73,7 @@ export default function RecordList() {
           </tr>
         </thead>
         <tbody>
-          {recordList()}
+          {recordList}
         </tbody>
       </table>
     </div>
