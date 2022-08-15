@@ -59,6 +59,63 @@ export default function Edit() {
   }
 
   return (
-    <div>edit</div>
+    <div>
+      <h3>Update Records</h3>
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input 
+          type="text"
+          className='form-control'
+          id='name'
+          value={form.name}
+          onChange={(e)=>updateForm({name:e.target.value})} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="position">Position</label>
+          <input 
+          type="text"
+          className='form-control'
+          id='position'
+          value={form.position}
+          onChange={(e)=>updateForm({position:e.target.value})} />
+        </div>
+        <div className="form-group">
+          <div className="form-check form-check-inline">
+            <input type="radio" 
+              className='form-check-input'
+              name='positionIntern'
+              value='Intern'
+              checked={form.level==="Intern"}
+              onChange={(e)=>updateForm({level:e.target.value})}
+            />
+            <label htmlFor="positonIntern" className='form-check-lebel'>Intern</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input type="radio" 
+              className='form-check-input'
+              name='positionJunior'
+              value='Junior'
+              checked={form.level==="Junior"}
+              onChange={(e)=>updateForm({level:e.target.value})}
+            />
+            <label htmlFor="positonJunior" className='form-check-lebel'>Junior</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input type="radio" 
+              className='form-check-input'
+              name='positionSenior'
+              value='Senior'
+              checked={form.level==="Senior"}
+              onChange={(e)=>updateForm({level:e.target.value})}
+            />
+            <label htmlFor="positonSenior" className='form-check-lebel'>Senior</label>
+          </div>
+        </div>
+        <div className="form-group">
+          <input type="submit" value='create person' className="btn btn-primary" />
+        </div>
+      </form>
+    </div>
   )
 }
