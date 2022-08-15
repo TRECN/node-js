@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function recordList() {
+export default function RecordList() {
   return (
-    <div>recordList</div>
+    <div>R</div>
   )
 }

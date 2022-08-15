@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function edit() {
+export default function Edit() {
   return (
     <div>edit</div>
   )
