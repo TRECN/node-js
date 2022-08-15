@@ -17,7 +17,7 @@ export default function Create() {
     });
   }
 
-  const onSubmit =async(e)=>{
+  async function onSubmit(e){
     e.preventDefault();
 
     const newPerson={...form};
