@@ -58,7 +58,7 @@ recordRoutes.route('/update/:id').post((req,res)=>{
         .collection('records')
         .updateOne(myquery,newval,(er,result)=>{
             if(er)throw er;
-            crossOriginIsolated.log('1 document updated');
+            console.log('1 document updated');
             res.json(result);
         });
 });
