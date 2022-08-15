@@ -10,6 +10,12 @@ export default function create() {
   });
   const navigate = useNavigate();
 
+  updateForm=(value)=>{
+    return setForm((prev)=>{
+      return{...prev,...value};
+    });
+  }
+
   return (
     <div>create</div>
   )
