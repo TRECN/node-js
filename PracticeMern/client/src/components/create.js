@@ -9,7 +9,13 @@ export default function Create() {
     position:'',
     level:'',
   });
+  const navigate = useNavigate();
 
+  const updateForm=(value)=>{
+    return setForm((prev)=>{
+      return{...prev,...value};
+    });
+  }
 
   async function onSubmit(e){
     e.preventDefault();
