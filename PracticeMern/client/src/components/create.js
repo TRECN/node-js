@@ -67,7 +67,6 @@ export default function Create() {
             <label htmlFor="positonIntern" className='form-check-lebel'>Intern</label>
           </div>
           <div className="form-check form-check-inline">
-            
             <input type="radio" 
               className='form-check-input'
               name='positionJunior'
