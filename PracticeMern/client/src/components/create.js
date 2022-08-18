@@ -46,7 +46,15 @@ export default function Create() {
       <h3>Create an New Record</h3>
       <form onSubmit={onSubmit}>
         
-        
+        <div className="form-group">
+          <label htmlFor="position">Position</label>
+          <input 
+          type="text"
+          className='form-control'
+          id='position'
+          value={form.position}
+          onChange={(e)=>updateForm({position:e.target.value})} />
+        </div>
         <div className="form-group">
           <div className="form-check form-check-inline">
             <input type="radio" 
