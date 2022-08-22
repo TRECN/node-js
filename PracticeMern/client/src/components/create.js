@@ -11,7 +11,12 @@ export default function Create() {
   });
   const navigate = useNavigate();
 
- 
+  const updateForm=(value)=>{
+    return setForm((prev)=>{
+      return{...prev,...value};
+    });
+  }
+
   async function onSubmit(e){
     e.preventDefault();
 
