@@ -30,17 +30,7 @@ export default function Create() {
       },
       body:JSON.stringify(newPerson),
     })
-    .catch(err=>{
-      window.alert(err);
-      return;
-    });
-    setForm({name:'',
-    position:'',
-    level:'',});
-
-    navigate('/')
-  }
-
+ 
   return (
     <div>
       <h3>Create an New Record</h3>
