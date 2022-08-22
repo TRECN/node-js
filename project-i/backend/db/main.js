@@ -14,6 +14,10 @@ module.exports={
                 _db=db.db('passcodes');
                 console.log('Successfully connected to mongoDb')
             }
-        })
+            return callback(er);
+        });
+    },
+    getDb:()=>{
+        return _db;
     }
 }
