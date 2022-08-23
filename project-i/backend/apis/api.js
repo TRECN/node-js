@@ -43,7 +43,21 @@ apiRoutes.route('/api/add').post((req,res)=>{
 });
 
 apiRoutes.route('/update/:id').post((req,res)=>{
-    let 
-})
+    let db_connect=dbo.getDb();
+    let myquery={_id:ObjectId(req.params.id)};
+    let newVal={
+        $set:{
+            title:req.body.title,
+            pass: req.body.pass,
+        },
+    };
+    db_connect
+        .collection('apis')
+        .updateOne(myquery,newVal,(er,result)=>{
+            if(er)throw er;
+            console.log('1 document updated')
+            res.json(result);
+        });
+});
 
 module.exports=apiRoutes;
