@@ -60,4 +60,16 @@ apiRoutes.route('/update/:id').post((req,res)=>{
         });
 });
 
+apiRoutes.route('/:id').delete((req,res)=>{
+    let db_connect=dbo.getDb();
+    let myquery={_id:ObjectId(req.params.id)};
+    db_connect
+        .collection('apis')
+        .deleteOne(myquery,(er,result)=>{
+            if(er)throw er;
+            console.log('1 document deleted')
+            res.json(result)
+        })
+})
+
 module.exports=apiRoutes;
