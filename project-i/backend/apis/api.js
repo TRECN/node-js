@@ -28,19 +28,7 @@ apiRoutes.route('/api/:id').get((req,res)=>{
         })
 })
 
-apiRoutes.route('/api/add').post((req,res)=>{
-    let db_connect=dbo.getDb();
-    let obj={
-        title:req.body.title,
-        pass:req.body.pass,
-    };
-    db_connect
-        .collection('apis')
-        .insertOne(obj,(er,result)=>{
-            if(er)throw er;
-            res.json(result);
-        })
-});
+
 
 apiRoutes.route('/update/:id').post((req,res)=>{
     let db_connect=dbo.getDb();
