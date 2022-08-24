@@ -1,8 +1,12 @@
 import React from 'react'
-
+import {Routes,Route} from 'react-router-dom'
 function App() {
   return (
-    <div>App</div>
+    <div>
+      <Routes>
+        <Route exact path='/' >
+      </Routes>
+    </div>
   )
 }
 
