@@ -17,7 +17,16 @@ apiRoutes.route('/api').get((req,res)=>{
             res.json(result)
         })
 })
-
+apiRoutes.route('/api/:id').get((req,res)=>{
+    let db_connect=dbo.getDb();
+    let myquery={_id:ObjectId(req.params.id)}
+    db_connect
+        .collection('apis')
+        .findOne(myquery,(er,result)=>{
+            if(er)throw er;
+            res.json(result);
+        })
+})
 
 apiRoutes.route('/api/add').post((req,res)=>{
     let db_connect=dbo.getDb();
