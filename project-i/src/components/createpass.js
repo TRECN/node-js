@@ -6,7 +6,7 @@ function CreatePass() {
     <div className="container">
       <div className="innerForm">
         <form action="">
-          <h1>Generate Password</h1>
+          <h1 className='head'>Generate Password</h1>
         </form>
       </div>
     </div>
