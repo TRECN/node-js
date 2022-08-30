@@ -7,7 +7,10 @@ function CreatePass() {
       <div className="innerForm">
         <form action="">
           <h1 className='head'>Generate Password</h1>
-          
+          <div className="enter">
+            <label className='head lab1'>title</label>
+            <input type="text" value="" placeholder='enter the title'/>
+          </div>
         </form>
       </div>
     </div>
