@@ -11,7 +11,9 @@ function CreatePass() {
             <label className='head lab1'>title</label>
             <input className='inp1' type="text" value="" placeholder='enter the title'/>
           </div>
-          
+          <div className="costom">
+            <h4 className='head'>Costomize your password</h4>
+          </div>
         </form>
       </div>
     </div>
