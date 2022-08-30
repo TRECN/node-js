@@ -24,7 +24,6 @@
     padding: 10px;
 }
 .lab1{
-    padding-left: 20px;
-    padding-right: 20px;
+    margin: 20px 10px;
     text-transform: capitalize;
 }
