@@ -22,8 +22,14 @@
 
 .enter{
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .lab1{
     margin: 20px 10px;
     text-transform: capitalize;
+}
+.inp1{
+    border: none;
 }
