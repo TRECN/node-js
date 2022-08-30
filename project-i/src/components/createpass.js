@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../styling/createPass.css'
 
 function CreatePass() {
+
+  const [val,setVal]=useState(1);
+
+  useEffect(()=>{
+    const ele=document.querySelector('.buble');
+    if(ele){
+      ele.style.left=`${Number(val/4)}px`
+    } 
+  })
+
   return (
     <div className="container">
       <div className="innerForm">
@@ -14,7 +24,12 @@ function CreatePass() {
           <div className="costom">
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
-            <input type="range" />
+              <input type="range" min='1' max='50' value={val}
+                onChange={({target:{value:radius}})=>{
+                  setVal(radius);
+                }}
+              />
+              <div className="buble">{val}</div>
             </div>
           </div>
         </form>
