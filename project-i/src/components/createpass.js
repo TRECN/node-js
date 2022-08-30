@@ -13,6 +13,9 @@ function CreatePass() {
           </div>
           <div className="costom">
             <h4 className='head'>Costomize your password</h4>
+            <div className="range">
+            <input type="range" />
+            </div>
           </div>
         </form>
       </div>
