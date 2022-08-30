@@ -24,12 +24,12 @@ function CreatePass() {
           <div className="costom">
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
+            <div className="buble">{val}</div>
               <input type="range" min='1' max='50' value={val}
                 onChange={({target:{value:radius}})=>{
                   setVal(radius);
                 }}
               />
-              <div className="buble">{val}</div>
             </div>
           </div>
         </form>
