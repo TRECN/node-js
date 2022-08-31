@@ -38,7 +38,11 @@ function CreatePass() {
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
               <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)'}}>Password length</p>
-              <div className="buble">{val}</div>
+              <div className="buble">
+                <input className='len' type="text" style={{width:'30px'}} onChange={(value)=>{
+                  setVal(value)
+                }} />
+              </div>
               <input type="range" min='1' max='50' value={val}
                 onChange={({target:{value:radius}})=>{
                   setVal(radius);
