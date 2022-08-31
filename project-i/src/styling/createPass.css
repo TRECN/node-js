@@ -52,3 +52,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.pass{
+    margin:10px;
+    box-shadow: 5px 10px 20px rgba(98, 98,98,0.24),
+     -5px -10px 20px rgba(111,110,110,0.322);
+}
+.pass input{
+    font-size: 20px;
+}
+.pass input:focus{
+    outline: none;
+}
