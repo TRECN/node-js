@@ -32,6 +32,9 @@ function CreatePass() {
                 }}
               />
             </div>
+            <div className="pass">
+              <input type="text" style={{border:'none'}}/>
+            </div>
           </div>
         </form>
       </div>
