@@ -4,6 +4,19 @@ import '../styling/createPass.css'
 function CreatePass() {
 
   const [val,setVal]=useState(1);
+  const [passG,setPassG]=useState('');
+
+  const passwordG=(val)=>{
+    var ch='0123456789abcdefghijklmnopqrstuvwxyz@#$%&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var passwordL=val;
+    var pass='';
+
+    for(var i=0;i<=passwordL;i++){
+      var ran=Math.floor(Math.random()*ch.length);
+      pass+=ch.substring(ran,ran+1);
+    }
+    setPassG(pass);
+  }
 
   useEffect(()=>{
     const ele=document.querySelector('.buble');
@@ -29,11 +42,12 @@ function CreatePass() {
               <input type="range" min='1' max='50' value={val}
                 onChange={({target:{value:radius}})=>{
                   setVal(radius);
+                  passwordG(val);
                 }}
               />
             </div>
             <div className="pass">
-              <input type="text" style={{border:'none'}}/>
+              <input type="text" style={{border:'none'}} value={passG}/>
             </div>
           </div>
         </form>
@@ -43,3 +57,4 @@ function CreatePass() {
 }
 
 export default CreatePass
+
