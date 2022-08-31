@@ -11,7 +11,7 @@ function CreatePass() {
     var passwordL=val;
     var pass='';
 
-    for(var i=0;i<=passwordL;i++){
+    for(var i=0;i<passwordL;i++){
       var ran=Math.floor(Math.random()*ch.length);
       pass+=ch.substring(ran,ran+1);
     }
@@ -23,6 +23,7 @@ function CreatePass() {
     if(ele){
       ele.style.left=`${Number(val/4)}px`
     } 
+    console.log(val)
   })
 
   return (
@@ -39,9 +40,7 @@ function CreatePass() {
             <div className="range">
               <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)'}}>Password length</p>
               <div className="buble">
-                <input className='len' type="text" style={{width:'30px'}} onChange={(value)=>{
-                  setVal(value)
-                }} />
+                <input className='len' type="text" style={{width:'30px'}} />
               </div>
               <input type="range" min='1' max='50' value={val}
                 onChange={({target:{value:radius}})=>{
