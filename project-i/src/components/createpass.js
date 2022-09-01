@@ -12,7 +12,7 @@ function CreatePass() {
     var passwordL=val;
     var pass='';
 
-    for(var i=0;i<=passwordL;i++){
+    for(var i=0;i<passwordL;i++){
       var ran=Math.floor(Math.random()*ch.length);
       pass+=ch[ran];
     }
@@ -24,15 +24,17 @@ function CreatePass() {
   }
 
   const changeHandle=(e)=>{
+    
     setPassG(e.target.value);
   }
 
   const changeHandle1=(e)=>{
     setVal(e.target.value);
+    passwordG(val)
   }
 
   useEffect(()=>{
-
+    
   },[val,passG])
 
 
