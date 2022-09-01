@@ -21,17 +21,14 @@ function CreatePass() {
   }
 
   const changeHandle=(e)=>{
-    setPassG(e.target.value);
+    passwordG(val);
+    setPassG(e.target.value)
   }
 
   const changeHandle1=(e)=>{
     setVal(e.target.value);
     
   }
-
-  useEffect(()=>{
-    passwordG(val)
-  })
 
 
   return (
