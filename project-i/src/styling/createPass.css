@@ -58,5 +58,18 @@
 .pass input:focus{
     outline: none;
 }
+.range{
+    display: flex;
+    align-items: center;
+}
+.range input{
+    width:30px;
+    height: 30px;
+    box-shadow: 5px 10px 20px rgba(98, 98,98,0.24),
+     -5px -10px 20px rgba(111,110,110,0.322);
+}
 
+.range input:focus{
+    outline: none;
+}
 

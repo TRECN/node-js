@@ -20,15 +20,16 @@ function CreatePass() {
       setPassG(pass);
   }
 
+  
   const changeHandle=(e)=>{
+    setVal(e.target.value);
+    
+  }
+  const changeHandle1=(e)=>{
     passwordG(val);
     setPassG(e.target.value)
   }
 
-  const changeHandle1=(e)=>{
-    setVal(e.target.value);
-    
-  }
 
 
   return (
@@ -43,11 +44,11 @@ function CreatePass() {
           <div className="costom">
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
-              <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)'}}>Password length</p>
-              <input type="text" style={{border:'none'}} value={val} onChange={changeHandle1}/>
+              <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)', marginRight:'20px'}}>Password length: </p>
+              <input type="text" style={{border:'none'}} onChange={changeHandle}/>
             </div>
             <div className="pass">
-              <input type="text" style={{border:'none'}} value={passG} onChange={changeHandle}/>
+              <input type="text" style={{border:'none'}} value={passG} onChange={changeHandle1}/>
             </div>
           </div>
         </form>
