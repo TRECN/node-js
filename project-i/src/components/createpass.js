@@ -16,26 +16,22 @@ function CreatePass() {
       var ran=Math.floor(Math.random()*ch.length);
       pass+=ch[ran];
     }
-    setTimeout(()=>{
-      setPassG(pass);
-    },200)
-
     
+      setPassG(pass);
   }
 
   const changeHandle=(e)=>{
-    
     setPassG(e.target.value);
   }
 
   const changeHandle1=(e)=>{
     setVal(e.target.value);
-    passwordG(val)
+    
   }
 
   useEffect(()=>{
-    
-  },[val,passG])
+    passwordG(val)
+  })
 
 
   return (
@@ -45,7 +41,7 @@ function CreatePass() {
           <h1 className='head'>Generate Password</h1>
           <div className="enter">
             <label className='head lab1'>title</label>
-            <input className='inp1' type="text" value="" placeholder='enter the title'/>
+            <input className='inp1' type="text" placeholder='enter the title'/>
           </div>
           <div className="costom">
             <h4 className='head'>Costomize your password</h4>
