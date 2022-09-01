@@ -31,6 +31,10 @@ function CreatePass() {
     setVal(e.target.value);
   }
 
+  useEffect(()=>{
+
+  },[val,passG])
+
 
   return (
     <div className="container">
