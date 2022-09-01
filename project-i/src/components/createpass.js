@@ -6,25 +6,31 @@ function CreatePass() {
   const [val,setVal]=useState(1);
   const [passG,setPassG]=useState('');
 
+
   const passwordG=(val)=>{
     var ch='0123456789abcdefghijklmnopqrstuvwxyz@#$%&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var passwordL=val;
     var pass='';
 
-    for(var i=0;i<passwordL;i++){
+    for(var i=0;i<=passwordL;i++){
       var ran=Math.floor(Math.random()*ch.length);
-      pass+=ch.substring(ran,ran+1);
+      pass+=ch[ran];
     }
-    setPassG(pass);
+    setTimeout(()=>{
+      setPassG(pass);
+    },200)
+
+    
   }
 
-  useEffect(()=>{
-    const ele=document.querySelector('.buble');
-    if(ele){
-      ele.style.left=`${Number(val/4)}px`
-    } 
-    console.log(val)
-  })
+  const changeHandle=(e)=>{
+    setPassG(e.target.value);
+  }
+
+  const changeHandle1=(e)=>{
+    setVal(e.target.value);
+  }
+
 
   return (
     <div className="container">
@@ -39,18 +45,10 @@ function CreatePass() {
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
               <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)'}}>Password length</p>
-              <div className="buble">
-                <input className='len' type="text" style={{width:'30px'}} />
-              </div>
-              <input type="range" min='1' max='50' value={val}
-                onChange={({target:{value:radius}})=>{
-                  setVal(radius);
-                  passwordG(val);
-                }}
-              />
+              <input type="text" style={{border:'none'}} value={val} onChange={changeHandle1}/>
             </div>
             <div className="pass">
-              <input type="text" style={{border:'none'}} value={passG}/>
+              <input type="text" style={{border:'none'}} value={passG} onChange={changeHandle}/>
             </div>
           </div>
         </form>
