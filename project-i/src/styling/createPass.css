@@ -64,3 +64,10 @@
 .pass input:focus{
     outline: none;
 }
+.range input{
+    font-size: 20px;
+}
+.range input:focus{
+    outline: none;
+}
+
