@@ -22,13 +22,11 @@ function CreatePass() {
 
   
   const changeHandle=(e)=>{
-    setVal(e.target.value);
-    
+    var te=Math.floor(e.target.value);
+    setVal(te)
   }
-  const changeHandle1=(e)=>{
-    passwordG(val);
-    setPassG(e.target.value)
-  }
+
+
 
 
 
@@ -45,10 +43,16 @@ function CreatePass() {
             <h4 className='head'>Costomize your password</h4>
             <div className="range">
               <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)', marginRight:'20px'}}>Password length: </p>
-              <input type="text" style={{border:'none'}} onChange={changeHandle}/>
+              <input type="number" style={{border:'none'}} value={val} onChange={changeHandle}/>
+            </div>
+            <div className="btn">
+            <input type="button" value="generate"  onClick={()=>passwordG(val)}/>
             </div>
             <div className="pass">
-              <input type="text" style={{border:'none'}} value={passG} onChange={changeHandle1}/>
+              
+              <input type="text passText" style={{border:'none'}} value={passG} onChange={(e)=>{
+                setPassG(e.target.value)
+              }}/>
             </div>
           </div>
         </form>
