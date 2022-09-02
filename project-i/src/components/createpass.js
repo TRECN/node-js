@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styling/createPass.css'
+import { AiOutlineCopy } from 'react-icons/fai';
 
 function CreatePass() {
 
@@ -52,6 +53,7 @@ function CreatePass() {
               <input type="text passText" style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
               }}/>
+              <input type="button" value="copy" className='copy' />
             </div>
             <div className="btnBlock">
               <div className="btnB generate">
