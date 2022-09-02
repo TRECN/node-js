@@ -92,6 +92,7 @@
     margin: 20px;
 }
 .copy{
-    
+    border: none;
+    background-color: white;
 }
 
