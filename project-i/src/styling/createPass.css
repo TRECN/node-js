@@ -81,3 +81,14 @@
     border-radius: 20px;
     text-transform: uppercase;
 }
+
+.btnBlock{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.btnB{
+    margin: 20px;
+}
+
