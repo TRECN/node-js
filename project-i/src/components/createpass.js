@@ -13,7 +13,7 @@ function CreatePass() {
 
   const [data,setData]=useState({
     title:'',
-    password:''
+    pass:''
   })
 
   const onSave=async(e)=>{
@@ -34,8 +34,10 @@ function CreatePass() {
     });
     setData({
       title:'',
-      password:''
+      pass:''
     })
+
+    nav('/')
   }
 
 
@@ -87,7 +89,8 @@ function CreatePass() {
             <div className="pass">
               <input type="text passText" id='passT' style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
-                data.password=passG;
+                data.pass=passG;
+                console.log(data.pass)
               }}/>
               
               <CopyToClipboard
