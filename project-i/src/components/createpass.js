@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../styling/createPass.css'
-import { AiOutlineCopy } from 'react-icons/fai';
+import { AiOutlineCopy } from 'react-icons/ai';
 
 function CreatePass() {
 
@@ -30,6 +30,21 @@ function CreatePass() {
         setVal(t)
   }
 
+  const copyPass=()=>{
+    /* Get the text field */
+  var copyText = document.getElementById("passT");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.write(copyText.value);
+  
+  /* Alert the copied text */
+  alert("Copied the text: " + copyText.value);
+  }
+
 
 
 
@@ -50,10 +65,10 @@ function CreatePass() {
               <input type="number" style={{border:'none'}} className='inp' value={val} onChange={changeHandle}/>
             </div>
             <div className="pass">
-              <input type="text passText" style={{border:'none'}} value={passG} onChange={(e)=>{
+              <input type="text passText" id='passT' style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
               }}/>
-              <input type="button" value="copy" className='copy' />
+              <button className='copy' onClick={()=>copyPass}><AiOutlineCopy/> </button>
             </div>
             <div className="btnBlock">
               <div className="btnB generate">
