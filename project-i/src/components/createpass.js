@@ -22,13 +22,11 @@ function CreatePass() {
 
   
   const changeHandle=(e)=>{
-    var t=e.target.value;
-
-    for(var i=0;i<t.length;i++){
-      
-    }
-
-      setVal(e.target.value)
+    var t=Math.round(e.target.value);
+      if(t==0)
+      setVal('')
+      else
+        setVal(t)
   }
 
 
@@ -45,21 +43,23 @@ function CreatePass() {
             <input className='inp1' type="text" placeholder='enter the title'/>
           </div>
           <div className="costom">
-            <h4 className='head'>Costomize your password</h4>
+            <h4 className='head'>Customize your password</h4>
             <div className="range">
               <p style={{borderBottom:'3px solid rgba(0, 113, 225, 0.4)', marginRight:'20px'}}>Password length: </p>
               <input type="number" style={{border:'none'}} className='inp' value={val} onChange={changeHandle}/>
-            </div>
-            <div className="generate">
-              <input type="button" className='btn' value="generate"  onClick={()=>passwordG(val)}/>
             </div>
             <div className="pass">
               <input type="text passText" style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
               }}/>
             </div>
-            <div className="save">
-              <input type="button" className='btn' value='save'/>
+            <div className="btnBlock">
+              <div className="btnB generate">
+                <input type="button" className='btn' value="generate"  onClick={()=>passwordG(val)}/>
+              </div>
+              <div className="btnB save">
+                <input type="button" className='btn' value='save'/>
+              </div>
             </div>
           </div>
         </form>
