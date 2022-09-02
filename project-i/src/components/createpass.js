@@ -2,11 +2,41 @@ import React, { useEffect, useState } from 'react'
 import '../styling/createPass.css'
 import { AiOutlineCopy } from 'react-icons/ai';
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import {useNavigate} from 'react-router-dom';
 
 function CreatePass() {
 
   const [val,setVal]=useState(1);
   const [passG,setPassG]=useState('');
+
+  const nav=useNavigate()
+
+  const [data,setData]=useState({
+    title:'',
+    password:''
+  })
+
+  const onSave=async(e)=>{
+    e.preventDefault();
+
+    const newPass={...data};
+
+    await fetch('http://localhost:5000/api/add',{
+       method:'POST',
+       headers:{
+        "Content-Type":"application/json",
+       },
+       body:JSON.stringify(newPass)
+    })
+    .catch(er=>{
+      window.alert(er);
+      return;
+    });
+    setData({
+      title:'',
+      password:''
+    })
+  }
 
 
   const passwordG=(val)=>{
@@ -44,7 +74,9 @@ function CreatePass() {
           <h1 className='head'>Generate Password</h1>
           <div className="enter">
             <label className='head lab1'>title</label>
-            <input className='inp1' type="text" placeholder='enter the title'/>
+            <input className='inp1' type="text" placeholder='enter the title' onChange={(e)=>{
+              data.title=e.target.value;
+            }}/>
           </div>
           <div className="costom">
             <h4 className='head'>Customize your password</h4>
@@ -55,6 +87,7 @@ function CreatePass() {
             <div className="pass">
               <input type="text passText" id='passT' style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
+                data.password=passG;
               }}/>
               
               <CopyToClipboard
@@ -72,7 +105,7 @@ function CreatePass() {
                 <input type="button" className='btn' value="generate"  onClick={()=>passwordG(val)}/>
               </div>
               <div className="btnB save">
-                <input type="button" className='btn' value='save'/>
+                <input type="button" className='btn' value='save' onClick={onSave}/>
               </div>
             </div>
           </div>
