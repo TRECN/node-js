@@ -59,8 +59,10 @@ function CreatePass() {
               
               <CopyToClipboard
                 text={passG}
-                onCopy={(e) => { e.preventDefault();
-                  alert('copied')
+                onCopy={(e) => {
+                  alert('copied');
+                  e.preventDefault();
+                  
                 }}>
                   <AiOutlineCopy/>
               </CopyToClipboard>
