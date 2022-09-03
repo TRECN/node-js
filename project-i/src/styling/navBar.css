@@ -1,0 +1,17 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 25vw;
+    background-color: rgb(113, 151, 253);
+    padding: 0px 5vw;
+}
+.title{
+    font-size: 3vh;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
