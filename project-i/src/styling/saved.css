@@ -11,6 +11,8 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     box-shadow: 10px 10px 20px rgba(98, 98,98,0.24),
      -10px -10px 20px rgba(111,110,110,0.322);
      border-radius: 20px;
