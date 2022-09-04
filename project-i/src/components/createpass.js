@@ -42,7 +42,7 @@ function CreatePass() {
   }
 
 
-  const passwordG = async (val) => {
+  const passwordG =(val) => {
     var ch = '0123456789abcdefghijklmnopqrstuvwxyz@#$%&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var passwordL = val;
     var pass = '';
@@ -52,7 +52,8 @@ function CreatePass() {
       pass += ch[ran];
     }
 
-    setPassG(pass);
+
+    return pass;
   }
 
 
@@ -71,8 +72,14 @@ function CreatePass() {
   }
 
 
+  useEffect(()=>{
+    updateVal({pass:passG})
+  },[passG])
 
-
+  const generate=()=>{
+    setPassG(passwordG(val))
+    
+  }
 
 
   return (
@@ -114,10 +121,9 @@ function CreatePass() {
             </div>
             <div className="btnBlock">
               <div className="btnB generate">
-                <input type="button" className='btn' value="generate" onClick={(e) => {
-                  passwordG(val)
-                  updateVal({pass:passG})
-                }} />
+                <input type="button" className='btn' value="generate" onClick={()=>{
+                  generate()
+                }}/>
               </div>
               <div className="btnB save">
                 <input type="button" className='btn' value='save' onClick={onSave} />
