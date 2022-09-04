@@ -16,11 +16,12 @@ function CreatePass() {
     pass:''
   })
 
+
   const onSave=async(e)=>{
+    console.log(data)
     e.preventDefault();
 
     const newPass={...data};
-
     await fetch('http://localhost:5000/api/add',{
        method:'POST',
        headers:{
@@ -52,6 +53,7 @@ function CreatePass() {
     }
     
       setPassG(pass);
+      setData(pass)
   }
 
   
@@ -63,6 +65,7 @@ function CreatePass() {
         setVal(t)
   }
 
+ 
 
 
 
@@ -76,9 +79,10 @@ function CreatePass() {
           <h1 className='head'>Generate Password</h1>
           <div className="enter">
             <label className='head lab1'>title</label>
-            <input className='inp1' type="text" placeholder='enter the title' onChange={(e)=>{
-              data.title=e.target.value;
-            }}/>
+            <input className='inp1' type="text" placeholder='enter the title' id='titleT' onChange={(e)=>{
+              setData({title:e.target.value})
+            }}
+            />
           </div>
           <div className="costom">
             <h4 className='head'>Customize your password</h4>
@@ -89,8 +93,7 @@ function CreatePass() {
             <div className="pass">
               <input type="text passText" id='passT' style={{border:'none'}} value={passG} onChange={(e)=>{
                 setPassG(e.target.value)
-                data.pass=passG;
-                console.log(data.pass)
+                setData({pass:e.target.value})
               }}/>
               
               <CopyToClipboard
