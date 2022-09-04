@@ -46,7 +46,7 @@ function Saved() {
       <div className="innerForm">
         <h3>Saved Passcode</h3>
         <table className="table table-striped" style={{marginTop:20}}>
-        <thead>
+        <thead className='thead'>
           <tr>
             <th>Title</th>
             <th>PassCode</th>
