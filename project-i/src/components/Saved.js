@@ -1,8 +1,22 @@
 import React from 'react'
+import '../styling/saved.css'
+
+
+
+const content=(props)=>(
+  <tr>
+    <td>{props.record.title}</td>
+    <td>{props.record.pass}</td>
+  </tr>
+)
 
 function Saved() {
   return (
-    <div>saved</div>
+    <div className="container">
+      <div className="innerForm">
+
+      </div>
+    </div>
   )
 }
 
