@@ -7,6 +7,11 @@ const Content=(props)=>(
   <tr>
     <td>{props.record.title}</td>
     <td>{props.record.pass}</td>
+    <td>
+      <input type="button" value='DELETE' onClick={()=>{
+        props.deleteRecord(props.record._id)
+      }} />
+    </td>
   </tr>
 )
 
@@ -36,9 +41,18 @@ function Saved() {
         <Content
           record={record}
           key={record._id}
+          deleteRecord={()=>deleteRecord(record._id)}
         />
       )
     })
+  }
+
+  const deleteRecord=async(id)=>{
+    await fetch(`http://localhost:5000/${id}`,{
+      method:'DELETE'
+    });
+    const newRecord=records.filter((el)=>el._id!==id)
+    setRecord(newRecord)
   }
 
   return (
