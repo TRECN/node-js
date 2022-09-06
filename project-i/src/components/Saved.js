@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../styling/saved.css'
+import { useNavigate } from 'react-router-dom'
 
-
-
+const nav=useNavigate();
 const Content=(props)=>(
   <tr>
     <td>{props.record.title}</td>
@@ -10,6 +10,11 @@ const Content=(props)=>(
     <td>
       <input type="button" value='DELETE' onClick={()=>{
         props.deleteRecord(props.record._id)
+      }} />
+    </td>
+    <td>
+      <input type="button" value='EDIT' onClick={()=>{
+        nav('/edit')
       }} />
     </td>
   </tr>
