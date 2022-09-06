@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import '../styling/saved.css'
 import { useNavigate } from 'react-router-dom'
 
-const nav=useNavigate();
+
+
 const Content=(props)=>(
   <tr>
     <td>{props.record.title}</td>
@@ -14,14 +15,14 @@ const Content=(props)=>(
     </td>
     <td>
       <input type="button" value='EDIT' onClick={()=>{
-        nav('/edit')
+        props.nav('/edit')
       }} />
     </td>
   </tr>
 )
 
 function Saved() {
-
+  const nav=useNavigate();
   const [records,setRecord]=useState([]);
 
   useEffect(()=>{
@@ -47,6 +48,7 @@ function Saved() {
           record={record}
           key={record._id}
           deleteRecord={()=>deleteRecord(record._id)}
+          nav={nav}
         />
       )
     })
