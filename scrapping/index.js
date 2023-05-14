@@ -1,6 +1,4 @@
 // Card Name, Card fee, Reward points/percentage per 100 spent, Lounge access, Milestone benefit, Card fee reversal condition if any
-
-const rp = require('request-promise');
 const ch = require('cheerio');
 const axios = require('axios')
 const fs = require('fs')
@@ -12,7 +10,9 @@ const scrap =async()=>{
     try{                          
         const {data} = await axios.get(url)
         const $=ch.load(data)
+        // console.log($)
         const container = $('.card-offer-contr')             
+        // console.log(container)
         const cardDetail=[]
         const cardEach={name:"",offers:[]}           
         container.each((id,ele)=>{       
