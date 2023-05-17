@@ -2,7 +2,7 @@
 const ch = require('cheerio');
 const axios = require('axios')
 const fs = require('fs');
-const { promises } = require('dns');
+const {Parser}= require('json2csv')
 
 
 var url = 'https://www.hdfcbank.com/personal/pay/cards/credit-cards'
@@ -133,14 +133,21 @@ const index = async () => {
         mergeData.push(obj2)
       }
 
+      
+        //converting the data to json file
+        fs.writeFileSync('Cards.json', JSON.stringify(mergeData), (err) => {
+          if (err)
+            console.log(err)
+          console.log("file updated Json..........................")
+
+        })
+        //converting the data to csv file
+        const parser=new Parser()
+        fs.writeFileSync('Cards.csv',parser.parse(mergeData))
 
 
-      fs.writeFileSync('Cards.json', JSON.stringify(mergeData), (err) => {
-        if (err)
-          console.log(err)
-        console.log("file updated..........................")
 
-      })
+
 
 
 
