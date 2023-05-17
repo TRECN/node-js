@@ -3,59 +3,62 @@ const ch = require('cheerio');
 const axios = require('axios')
 const fs = require('fs')
 
-const url = 'https://www.hdfcbank.com/personal/pay/cards/credit-cards';
 
 
-const scrap =async()=>{
-    try{                          
-        const {data} = await axios.get(url)
-        const $=ch.load(data)
-        // console.log($)
-        const container = $('.card-offer-contr')             
-        // console.log(container)
-        const cardDetail=[]
-        const cardEach={name:"",offers:[]}           
-        container.each((id,ele)=>{       
-            const name=$(ele).children('.row').children('.card-header').children('.cardTitle').text()
-            const ul=$(ele).children('.row .bodyArea').children(".col-sm-8").children('.offer-dtl').children("ul")
-            const offers=[];
-            ul.each((id,ele)=>{
-                const li=$(ele).children('li')
-                const offer=[]
-                li.each((id,ele)=>{
-                    const txt=$(ele).text()
-                    offer.push(txt)
-                })
-                offers.push(offer)
+const Data = []
+var url = 'https://www.hdfcbank.com/personal/pay/cards/credit-cards'
+const scrap = async () => {
+  try {
+    const { data } = await axios.get(url)
+    const $ = ch.load(data)
+    // console.log($)
+    const container = $('.card-offer-contr')
+    // console.log(container)
+
+    container.each(async (id, ele) => {
+      const cardEach = {}
+      const name = $(ele).find('.cardTitle').text();
+      const KnowMore = $(ele).find('.btnParent').children('a')
+      KnowMore.each(async (id, ele) => {
+        if ($(ele).attr('title') == 'KNOW MORE' || $(ele).attr('title') == 'Know more' || $(ele).attr('title') == 'Know More' || $(ele).attr('title') == 'know more') {
+          const url = `https://www.hdfcbank.com${$(ele).attr('href')}`;
+          // console.log(url)
+          {
+            const { data } = await axios.get(url)
+            const $ = ch.load(data)
+            const container = $('.sub-content').children('.row')
+            container.each((id, ele) => {
+              const leftHalf = $(ele).children('.left-section').find('.row-name').text()
+              const rightHalfP = $(ele).find('p')
+              const rightHalfUl = $(ele).find('li')
+              const right = []
+              rightHalfP.each((id, ele) => {
+                const content = $(ele).text()
+                right.push(content)
+              })
+              rightHalfUl.each((id, ele) => {
+                const content = $(ele).text()
+                right.push(content)
+              })
+              Object.assign(cardEach, { ['NAME']: name, [leftHalf]: right })
             })
-             cardEach.name=name;
-             cardEach.offers=offers;
-            //  console.log(cardEach)           
-             cardDetail.push(JSON.parse(JSON.stringify(cardEach)))
-             
-             
-             
-        })                           
-        console.log(cardDetail)  
-        fs.writeFile("cards.json", JSON.stringify(cardDetail), (err) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            console.log("Successfully written data to file");
-          });   
-          fs.writeFile("cards.csv", JSON.stringify(cardDetail), (err) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            console.log("Successfully written data to file");
-          });   
-    }
-    catch(err){
-        console.log(err)
-    }
+            fs.appendFile("cards.csv", `\n ${JSON.stringify(cardEach)},`, err => {
+              if (err) throw err
+              console.log('file written...')
+            })
+          }
+        }
 
+
+      })
+
+    })
+    console.log(Data)
+
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
 
 scrap()
