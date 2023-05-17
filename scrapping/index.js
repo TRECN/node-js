@@ -6,6 +6,7 @@ const fs = require('fs')
 
 
 const Data = []
+const Data2=[]
 var url = 'https://www.hdfcbank.com/personal/pay/cards/credit-cards'
 const scrap = async () => {
   try {
@@ -17,6 +18,7 @@ const scrap = async () => {
 
     container.each(async (id, ele) => {
       const cardEach = {}
+      const cardFees = {}
       const name = $(ele).find('.cardTitle').text();
       const KnowMore = $(ele).find('.btnParent').children('a')
       KnowMore.each(async (id, ele) => {
@@ -27,7 +29,47 @@ const scrap = async () => {
             const { data } = await axios.get(url)
             const $ = ch.load(data)
             const container = $('.sub-content').children('.row')
-            container.each((id, ele) => {
+
+            const feeNav = $('.card-detail').children('ul').find('a');
+            var a;
+            {
+
+              feeNav.each(async (id, ele) => {
+                if ($(ele).text() === 'FEES & CHARGES') {
+                  const Fee = `https://www.hdfcbank.com${$(ele).attr('href')}`
+                  // console.log(Fee)
+                  if (Fee != 'https://www.hdfcbank.com/personal/pay/cards/credit-cards/bharat-cashback/fees-and-charges') {
+                    const { data } = await axios.get(Fee)
+                    const $ = ch.load(data)
+                    const container = $('.sub-content').children('.row').children('.inner-content')
+                    const p = $(container).find('p')
+                    const ul = $(container).find('li');
+                    const right = []
+
+                    p.each((id, ele) => {
+                      const content = $(ele).text()
+                      right.push(content)
+                    })
+                    ul.each((id, ele) => {
+                      const content = $(ele).text()
+                      right.push(content)
+                    })
+                    Object.assign(cardFees, { ['Name']: name, ['Fees']: right },)
+                    Data.push(JSON.stringify(cardFees)+",")
+                    
+                  }
+                }
+                console.log(cardFees)
+              })
+            }
+
+            
+
+
+
+            // console.log(container2)
+            const rest = {}
+            container.each(async (id, ele) => {
               const leftHalf = $(ele).children('.left-section').find('.row-name').text()
               const rightHalfP = $(ele).find('p')
               const rightHalfUl = $(ele).find('li')
@@ -40,25 +82,39 @@ const scrap = async () => {
                 const content = $(ele).text()
                 right.push(content)
               })
-              Object.assign(cardEach, { ['NAME']: name, [leftHalf]: right })
+              Object.assign(rest, { [leftHalf]: right })
             })
-            fs.appendFile("cards.csv", `\n ${JSON.stringify(cardEach)},`, err => {
-              if (err) throw err
-              console.log('file written...')
-            })
+
+            Object.assign(cardEach, { ['Name']: name, rest },)
+            Data2.push(JSON.stringify(cardEach))
+
+
+
+
           }
+
         }
-
-
       })
 
+
     })
-    console.log(Data)
+    fs.appendFile('card.json', JSON.stringify(Data2), (err) => {
+      if (err)
+        console.log(err)
+      console.log("file updated....")
+    })
+
+    fs.appendFile('card1.json', JSON.stringify(Data), (err) => {
+      if (err)
+        console.log(err)
+      console.log("file updated..........................")
+    })
 
   }
   catch (err) {
     console.log(err)
   }
+
 }
 
 scrap()
