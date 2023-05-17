@@ -1,13 +1,13 @@
 // Card Name, Card fee, Reward points/percentage per 100 spent, Lounge access, Milestone benefit, Card fee reversal condition if any
 const ch = require('cheerio');
 const axios = require('axios')
-const fs = require('fs')
+const fs = require('fs');
+const { promises } = require('dns');
 
 
-
-const Data = []
-const Data2=[]
 var url = 'https://www.hdfcbank.com/personal/pay/cards/credit-cards'
+const Data = []
+const Data2 = []
 const scrap = async () => {
   try {
     const { data } = await axios.get(url)
@@ -55,19 +55,14 @@ const scrap = async () => {
                       right.push(content)
                     })
                     Object.assign(cardFees, { ['Name']: name, ['Fees']: right },)
-                    Data.push(JSON.stringify(cardFees)+",")
-                    
+                    Data.push(cardFees)
+
                   }
                 }
-                console.log(cardFees)
               })
             }
 
-            
 
-
-
-            // console.log(container2)
             const rest = {}
             container.each(async (id, ele) => {
               const leftHalf = $(ele).children('.left-section').find('.row-name').text()
@@ -86,11 +81,7 @@ const scrap = async () => {
             })
 
             Object.assign(cardEach, { ['Name']: name, rest },)
-            Data2.push(JSON.stringify(cardEach))
-
-
-
-
+            Data2.push(cardEach)
           }
 
         }
@@ -98,23 +89,72 @@ const scrap = async () => {
 
 
     })
-    fs.appendFile('card.json', JSON.stringify(Data2), (err) => {
-      if (err)
-        console.log(err)
-      console.log("file updated....")
-    })
-
-    fs.appendFile('card1.json', JSON.stringify(Data), (err) => {
-      if (err)
-        console.log(err)
-      console.log("file updated..........................")
-    })
-
   }
   catch (err) {
     console.log(err)
   }
 
+
 }
 
-scrap()
+const index = async () => {
+
+  const a = new Promise((resolve, reject) => {
+    scrap()
+  }).then(
+
+    setTimeout(() => {
+
+      let newData = []
+      let newData2 = []
+      let UData = {}
+      let UData2 = {}
+      for (let i in Data) {
+        obj = Data[i]['Name'];
+        UData[obj] = Data[i]
+
+      }
+      for (i in UData) {
+        newData.push(UData[i])
+      }
+      for (let i in Data2) {
+        obj1 = Data2[i]['Name'];
+        UData2[obj1] = Data2[i]
+
+      }
+      for (i in UData2) {
+        newData2.push(UData2[i])
+      }
+      const mergeData = []
+      for (i in newData) {
+        let obj = newData2.find(o => o['Name'] === newData[i]['Name'])
+        let obj2 = {}
+        Object.assign(obj2, { ...newData[i], ...obj['rest'] })
+        mergeData.push(obj2)
+      }
+
+
+
+      fs.writeFileSync('Cards.json', JSON.stringify(mergeData), (err) => {
+        if (err)
+          console.log(err)
+        console.log("file updated..........................")
+
+      })
+
+
+
+
+    }, 15000)
+
+  )
+
+
+}
+index()
+
+
+
+
+
+
